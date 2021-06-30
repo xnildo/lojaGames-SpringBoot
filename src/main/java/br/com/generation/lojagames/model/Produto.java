@@ -31,9 +31,17 @@ public class Produto {
 	private int qtd;
 	
 	@ManyToOne //FAZENDO RELAÇAO DESSA TABLEA COM A TABELA TEMA 
-	@JsonIgnoreProperties("produtos")//	VAI IGNORAR O ATRIBUTOS PRODUTOS 
+	@JsonIgnoreProperties("produtos")//	VAI IGNORAR O ATRIBUTOS PRODUTO 
 	private Categoria categoria;
 	
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 
 	public long getId() {
 		return id;

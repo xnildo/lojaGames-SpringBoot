@@ -28,11 +28,22 @@ public class Categoria {
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")//VAI IGNORAR O ATRIBUTOS CATEGORIAS
-	private List<Categoria> categorias;
+	private List<Produto> produtos;
 
 	public long getId() {
 		return id;
 	}
+	
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
 
 	public void setId(long id) {
 		this.id = id;
