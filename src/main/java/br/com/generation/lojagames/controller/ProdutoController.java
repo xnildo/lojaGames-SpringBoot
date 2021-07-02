@@ -40,21 +40,30 @@ public class ProdutoController {
 	}
 	
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Produto>> getByMarca(@PathVariable String nome){
+	public ResponseEntity<List<Produto>> getByName(@PathVariable String nome){
 		return ResponseEntity.ok(produtoRepository
 				.findAllByNomeContainingIgnoreCase(nome));
 		
 	}
 	
+	@GetMapping("/marca/{marca}")
+	public ResponseEntity<List<Produto>> getByMarca(@PathVariable String marca){
+		return ResponseEntity.ok(produtoRepository
+				.findAllByMarcaContainingIgnoreCase(marca));
+		
+	}
+	
 	@PostMapping
 	public ResponseEntity<Produto> post(@RequestBody Produto nome){
-		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(nome));
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(produtoRepository.save(nome));
 		
 	}
 	
 	@PutMapping
 	public ResponseEntity<Produto> put(@RequestBody Produto nome){
-		return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(nome));
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(produtoRepository.save(nome));
 		
 	}
 	

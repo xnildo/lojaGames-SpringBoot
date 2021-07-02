@@ -44,7 +44,7 @@ public class CategoriaController {
 	@GetMapping("/categoria/{categoria}")
 	public ResponseEntity<List<Categoria>> getByCategoria(@PathVariable String categoria){
 		return ResponseEntity.ok(categoriaRepository
-				.findAllByDescricaoContainingIgnoreCase(categoria));
+				.findAllByCategoriaContainingIgnoreCase(categoria));
 		
 	}
 	
@@ -57,13 +57,15 @@ public class CategoriaController {
 	
 	@PostMapping
 	public ResponseEntity<Categoria> post(@RequestBody Categoria categoria){
-		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(categoriaRepository.save(categoria));
 		
 	}
 	
 	@PutMapping
 	public ResponseEntity<Categoria> put(@RequestBody Categoria categoria){
-		return ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.save(categoria));
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(categoriaRepository.save(categoria));
 		
 	}
 	
