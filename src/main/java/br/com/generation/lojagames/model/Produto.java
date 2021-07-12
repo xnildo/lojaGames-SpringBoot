@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity // SERA UMA ENTIDADE DO JPA
-@Table(name = "produtos") // CRIAÇÃO DA TABELA TEMA
+@Table(name = "tb_produtos") // CRIAÇÃO DA TABELA TEMA
 public class Produto {
 
 	// ATRIBUTOS E MÉTODOS
@@ -34,6 +34,18 @@ public class Produto {
 	@JsonIgnoreProperties("produtos")//	VAI IGNORAR O ATRIBUTOS PRODUTO 
 	private Categoria categoria;
 	
+	@ManyToOne //FAZENDO RELAÇAO DESSA TABLEA COM A TABELA TEMA 
+	@JsonIgnoreProperties("produtos")//	VAI IGNORAR O ATRIBUTOS PRODUTO 
+	private Usuario usuario;
+	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public Categoria getCategoria() {
 		return categoria;

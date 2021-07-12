@@ -20,13 +20,13 @@ import br.com.generation.lojagames.repository.CategoriaRepository;
 
 @RestController //É UM CONTROLLER
 @CrossOrigin(origins ="*", allowedHeaders = "*")
-@RequestMapping("/categoria")
+@RequestMapping("/categorias")
 public class CategoriaController {
 	 
 	@Autowired //INJETAR O SERVIÇO
 	public CategoriaRepository categoriaRepository;
 	
-	@GetMapping
+	@GetMapping("/todos")
 	public ResponseEntity<List<Categoria>> getAll(){
 		return ResponseEntity.ok(categoriaRepository.findAll());
 		
@@ -49,20 +49,20 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity<List<Categoria>> getByDescricao(@PathVariable String decricao){
+	public ResponseEntity<List<Categoria>> getByDescricao(@PathVariable String descricao){
 		return ResponseEntity.ok(categoriaRepository
-				.findAllByDescricaoContainingIgnoreCase(decricao));
+				.findAllByDescricaoContainingIgnoreCase(descricao));
 		
 	}
 	
-	@PostMapping
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Categoria> post(@RequestBody Categoria categoria){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(categoriaRepository.save(categoria));
 		
 	}
 	
-	@PutMapping
+	@PutMapping("/alterar")
 	public ResponseEntity<Categoria> put(@RequestBody Categoria categoria){
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(categoriaRepository.save(categoria));

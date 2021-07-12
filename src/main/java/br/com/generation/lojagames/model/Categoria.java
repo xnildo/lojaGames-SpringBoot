@@ -13,9 +13,10 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity //SERA UMA ENTIDADE DO JPA
-@Table(name = "categoria") //CRIAÇÃO DA TABELA CATEGORIA
+@Table(name = "tb_categorias") //CRIAÇÃO DA TABELA CATEGORIA
 public class Categoria {
 	//ATRIBUTOS E MÉTODOS
+	
 	@Id // ID
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO-INCREMENTO
 	private long id;

@@ -19,13 +19,13 @@ import br.com.generation.lojagames.repository.ProdutoRepository;
 
 @Controller
 @CrossOrigin(origins ="*", allowedHeaders = "*")
-@RequestMapping("/produto")
+@RequestMapping("/produtos")
 public class ProdutoController {
 	
 	@Autowired
 	public ProdutoRepository produtoRepository;
 
-	@GetMapping
+	@GetMapping("/todos")
 	public ResponseEntity<List<Produto>> getAll(){
 		return ResponseEntity.ok(produtoRepository.findAll());
 		
@@ -53,14 +53,14 @@ public class ProdutoController {
 		
 	}
 	
-	@PostMapping
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Produto> post(@RequestBody Produto nome){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(produtoRepository.save(nome));
 		
 	}
 	
-	@PutMapping
+	@PutMapping("/alterar")
 	public ResponseEntity<Produto> put(@RequestBody Produto nome){
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(produtoRepository.save(nome));
